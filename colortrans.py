@@ -21,7 +21,7 @@ __license__   = 'WTFPL http://sam.zoy.org/wtfpl/'
 
 #---------------------------------------------------------------------
 
-import sys
+import sys, re
 
 CLUT = [  # color look-up table
 #    8-bit, RGB hex
@@ -319,48 +319,41 @@ def print_all():
         sys.stdout.write('\033[38;5;%sm%s:%s' % (short, short, rgb))
         sys.stdout.write("\033[0m\n")
     print "Printed all codes."
-    print "You can translate a hex or 0-255 code by providing a argument."
+    print "You can translate a hex or 0-255 code by providing an argument."
 
 def rgb2short(rgb):
     """ Find the closest xterm-256 approximation to the given RGB value.
     @param rgb: Hex code representing an RGB value, eg, 'abcdef'
     @returns: String between 0 and 255, compatible with xterm.
     >>> rgb2short('123456')
-    '233'
-    >>> rgb2short('0')
-    '16'
+    ('23', '005f5f')
     >>> rgb2short('ffffff')
-    '231'
-    >>> rgb2short('DEAD')
-    '45'
-    >>> rgb2short('dead')
-    '45'
-    >>> rgb2short('#dead')
-    '45'
+    ('231', 'ffffff')
+    >>> rgb2short('0DADD6') # vimeo logo
+    ('38', '00afd7')
     """
     rgb = _strip_hash(rgb)
-    closest = None
-    ##print '***', rgb
-    # Convert string rep of hex into actual hex.
-    rgb = _str2hex(rgb)
-    vals_list = SHORT2RGB_DICT.values()
-    vals_list.sort()
-    i = 0
-    while i < len(vals_list) - 1:
-        s, b = _str2hex(vals_list[i]), _str2hex(vals_list[i+1])  # smaller, bigger
-        ##print 'test:', hex(s) , hex(rgb) , hex(b)
-        # Find closest match to input.
-        if s <= rgb < b:
-            s1 = abs(s - rgb)
-            b1 = abs(b - rgb)
-            if s1 < b1: closest = s
-            else: closest = b
-            break
-        i += 1
-    if closest is None:
-        ##print "Oops, didn't find match!"
-        return RGB2SHORT_DICT['ffffff']
-    return RGB2SHORT_DICT[ '%06.x' % closest ]
+    incs = (0x00, 0x5f, 0x87, 0xaf, 0xd7, 0xff)
+    # Break 6-char RGB code into 3 integer vals.
+    parts = [ int(h, 16) for h in re.split(r'(..)(..)(..)', rgb)[1:4] ]
+    res = []
+    for part in parts:
+        i = 0
+        while i < len(incs)-1:
+            s, b = incs[i], incs[i+1]  # smaller, bigger
+            if s <= part <= b:
+                s1 = abs(s - part)
+                b1 = abs(b - part)
+                if s1 < b1: closest = s
+                else: closest = b
+                res.append(closest)
+                break
+            i += 1
+    #print '***', res
+    res = ''.join([ ('%02.x' % i) for i in res ])
+    equiv = RGB2SHORT_DICT[ res ]
+    #print '***', res, equiv
+    return equiv, res
 
 RGB2SHORT_DICT, SHORT2RGB_DICT = _create_dicts()
 
@@ -374,8 +367,10 @@ if __name__ == '__main__':
         raise SystemExit
     arg = sys.argv[1]
     if len(arg) < 4 and int(arg) < 256:
-        print 'xterm color %s -> RGB exact %s' % (
-            arg, short2rgb(arg) )
+        rgb = short2rgb(arg)
+        sys.stdout.write('xterm color \033[38;5;%sm%s\033[0m -> RGB exact \033[38;5;%sm%s\033[0m' % (arg, arg, arg, rgb))
+        sys.stdout.write("\033[0m\n")
     else:
-        print 'RGB %s -> xterm color approx %s' % (
-            arg, rgb2short(arg) )
+        short, rgb = rgb2short(arg)
+        sys.stdout.write('RGB %s -> xterm color approx \033[38;5;%sm%s (%s)' % (arg, short, short, rgb))
+        sys.stdout.write("\033[0m\n")
