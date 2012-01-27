@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 
-""" Convert values between RGB hex codes and xterm-256 color codes.
+""" Convert an image (argv[1]) to an ANSI text string (xterm-256color)
+
+Original readme from colortrans.py follows:
 
 Nice long listing of all 256 colors and their codes. Useful for
 developing console color themes, or even script output schemes.
@@ -14,7 +16,7 @@ I'm not sure where this script was inspired from. I think I must have
 written it from scratch, though it's been several years now.
 """
 
-__author__    = 'Micah Elliott http://MicahElliott.com'
+__author__    = 'Micah Elliott http://MicahElliott.com; Kevin Lange <k@dakko.us>'
 __version__   = '0.1'
 __copyright__ = 'Copyright (C) 2011 Micah Elliott.  All rights reserved.'
 __license__   = 'WTFPL http://sam.zoy.org/wtfpl/'
