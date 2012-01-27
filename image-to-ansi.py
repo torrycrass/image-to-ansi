@@ -360,17 +360,13 @@ RGB2SHORT_DICT, SHORT2RGB_DICT = _create_dicts()
 #---------------------------------------------------------------------
 
 if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
-    if len(sys.argv) == 1:
-        print_all()
-        raise SystemExit
-    arg = sys.argv[1]
-    if len(arg) < 4 and int(arg) < 256:
-        rgb = short2rgb(arg)
-        sys.stdout.write('xterm color \033[38;5;%sm%s\033[0m -> RGB exact \033[38;5;%sm%s\033[0m' % (arg, arg, arg, rgb))
+    import Image
+    im = Image.open(sys.argv[1])
+    for y in xrange(im.size[1]):
+        for x in xrange(im.size[0]):
+            p = im.getpixel((x,y))
+            h = "%2x%2x%2x" % (p[0],p[1],p[2])
+            short, rgb = rgb2short(h)
+            sys.stdout.write("\033[48;5;%sm  " % short)
         sys.stdout.write("\033[0m\n")
-    else:
-        short, rgb = rgb2short(arg)
-        sys.stdout.write('RGB %s -> xterm color approx \033[38;5;%sm%s (%s)' % (arg, short, short, rgb))
-        sys.stdout.write("\033[0m\n")
+    sys.stdout.write("\n")
