@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-"""This is a improved image_to_ansi.py.
+"""This is an improved image_to_ansi.py.
 It's fast 7x faster than original version.
 
 WTFPL is preserved for saying thank you to original developer, Mr. Elliott.
