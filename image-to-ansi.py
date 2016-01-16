@@ -11,8 +11,6 @@ __version__   = '0.1'
 __copyright__ = 'Copyright (C) 2011 Micah Elliott.  All rights reserved.'
 __license__   = 'WTFPL http://sam.zoy.org/wtfpl/'
 
-#---------------------------------------------------------------------
-
 import sys
 
 CLUT = [
@@ -274,6 +272,7 @@ CLUT = [
     ('eeeeee', '255'),
 ]
 
+
 def _create_incs_lut():
     incs = [(0x00, 0x5f), (0x5f, 0x87), (0x87, 0xaf), (0xaf, 0xd7), (0xd7, 0xff)]
     res = []
@@ -287,39 +286,23 @@ def _create_incs_lut():
                 break
     return res
 
-def rgb2short_fast(r, g, b):
-    res = ['', '', '']
-    for i, part in enumerate([r, g, b]):
-        res[i] = INCS_LUT[part]
-    res = '%s%s%s' % (res[0], res[1], res[2])
-    equiv = RGB2SHORT_DICT[ res ]
-    return equiv
-
 RGB2SHORT_DICT = dict(CLUT)
 INCS_LUT = _create_incs_lut()
 
-#---------------------------------------------------------------------
 
-def datalist(im):
-    return list(im.getdata())
+def lut(part):
+    return INCS_LUT[part]
 
-def slow():
+
+def rgb2short_fast(r, g, b):
+    return RGB2SHORT_DICT['%s%s%s' % (lut(r), lut(g), lut(b))]
+
+
+if __name__ == '__main__':
     from PIL import Image
-    im = Image.open('takumi.jpg')
-    for y in xrange(im.size[1]):
-        for x in xrange(im.size[0]):
-            p = im.getpixel((x,y))
-            h = "%2x%2x%2x" % (p[0],p[1],p[2])
-            short, rgb = rgb2short(h)
-            sys.stdout.write("\033[48;5;%sm  " % short)
-        sys.stdout.write("\033[0m\n")
-    sys.stdout.write("\n")
-
-def fast():
-    from PIL import Image
-    im = Image.open('takumi.jpg')
+    im = Image.open('scr.png')
     x = im.size[0]
-    im = datalist(im)
+    im = list(im.getdata())
     s = []
     for i, p in enumerate(im):
         short = rgb2short_fast(p[0], p[1], p[2])
@@ -328,6 +311,3 @@ def fast():
             s.append("\033[0m\n")
     s.append("\n")
     sys.stdout.write(''.join(s))
-
-if __name__ == '__main__':
-    fast()
