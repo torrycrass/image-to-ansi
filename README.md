@@ -8,6 +8,8 @@ This python script is based off of original work by Micah Elliott (MicahElliott)
 
 This script uses python libraries to provide a way to take image files and make them color compatible for use in a shell (ANSI). Which allows display of terminal art such as that contained in the demo.png file. The original colortrans.py file (not included here) provides a way to translate RGB values into ANSI compatible terminal codes (i.e. color included), find that script if you plan to do this all manually.
 
+![alt text](https://github.com/torrycrass/image-to-asni/raw/master/demo.png "demo converted cli image")
+
 ### Prerequisites
 *Assumptions*
 
@@ -20,8 +22,8 @@ Yeah yeah, I'm aware about assumptions but this isn't subtaintial enough that I'
 
 ### To-Do List
 
-[ ] Review sizing of output. Currently images larger than 50x50 are not very practical for console use.
-[ ] Update script to display help information on run without variable or --help option
+- [ ] Review sizing of output. Currently images larger than 50x50 are not very practical for console use.
+- [ ] Update script to display help information on run without variable or --help option
 
 #### Additional References/Resources
 
