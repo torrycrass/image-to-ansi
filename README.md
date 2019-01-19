@@ -2,7 +2,7 @@
 
 *Credit where credit is due.*
 
-This python script is based off of original work by Micah Elliott (MicahElliott) located in Gist colortrans.py which was then used to create image-to-ansi.py and subsequently improved on by Takumi Sueda (puhitaku). A big thanks to those foundations.
+This python script is based off of original work by Micah Elliott (MicahElliott) located in Gist colortrans.py which was then used to create image-to-ansi.py by K Lange (klange) and subsequently improved on by Takumi Sueda (puhitaku). A big thanks to those foundations.
 
 ## Purpose
 
@@ -29,3 +29,6 @@ Yeah yeah, I'm aware about assumptions but this isn't subtaintial enough that I'
 
 If you are looking for simple text to ASCII art, I recommend using the following site. It has a large design selection and has provided solid results: http://patorjk.com/software/taag/
 
+Micah Elliott (MicahElliott): https://gist.github.com/MicahElliott/719710
+K Lange (klange): https://gist.github.com/klange/1687427
+Takumi Sueda (puhitaku): https://gist.github.com/puhitaku/7eaf6142fa5a42425f55
