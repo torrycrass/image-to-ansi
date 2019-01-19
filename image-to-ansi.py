@@ -1,9 +1,23 @@
 #! /usr/bin/env python
 
+"""
+This is a derivative of the improvements made by Takumi Sueda (puhitaku) on
+image-to-ansi.py at https://gist.github.com/puhitaku/7eaf6142fa5a42425f55
+
+This version updates a variable to allow for a string variable (filename) to be passed at run time from cli to the
+program. This simplifies execution by allowing the user to run:
+
+python image-to-ansi.py <filename>
+
+-torrycrass
+"""
+
 """This is an improved image_to_ansi.py.
 It's 7x faster than original version.
 
 WTFPL is preserved for saying thank you to original developer, Mr. Elliott.
+
+above comment by Takumi Sueda (puhitaku)
 """
 
 __author__    = 'Micah Elliott http://MicahElliott.com; Kevin Lange <k@dakko.us>; Takumi Sueda <puhitaku@gmail.com>'
