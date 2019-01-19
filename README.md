@@ -16,7 +16,7 @@ Yeah yeah, I'm aware about assumptions but this isn't subtaintial enough that I'
 1. Python (if not already installed install by **apt install python**)
 2. python-pip (**apt install python-pip**)
 3. Pillow (**pip install pillow**)
-4. Image (**pip install Image **)
+4. Image (**pip install Image**)
 
 ### To-Do List
 
