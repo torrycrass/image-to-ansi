@@ -300,7 +300,7 @@ def rgb2short_fast(r, g, b):
 
 if __name__ == '__main__':
     from PIL import Image
-    im = Image.open('scr.png')
+    im = Image.open('sys.argv[1]')
     x = im.size[0]
     im = list(im.getdata())
     s = []
