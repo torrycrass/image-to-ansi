@@ -23,12 +23,18 @@ Yeah yeah, I'm aware about assumptions but this isn't subtaintial enough that I'
 ### To-Do List
 
 - [ ] Review sizing of output. Currently images larger than 50x50 are not very practical for console use.
-- [ ] Update script to display help information on run without variable or --help option
+- [x] Update script to display help information on run without variable or --help option
 
 #### Additional References/Resources
 
-If you are looking for simple text to ASCII art, I recommend using the following site. It has a large design selection and has provided solid results: http://patorjk.com/software/taag/
+- http://patorjk.com/software/taag/ (An online text to ASCII art converter)
+- https://16colo.rs (A library of ANSI art)
+- https://www.ansilove.org (A software library for ANSI file conversion)
+- http://www.roysac.com (A collection of ANSI/ASCII art and tools)
+- http://vectorpoem.com/playscii/ (An ANSI/ASCII art editing tool)
+- https://github.com/atdt/escapes.js/ (A library for rendering ANSI art in HTML5/JS)
 
+#### Prior Author Credits
 - Micah Elliott (MicahElliott): https://gist.github.com/MicahElliott/719710
 - K Lange (klange): https://gist.github.com/klange/1687427
 - Takumi Sueda (puhitaku): https://gist.github.com/puhitaku/7eaf6142fa5a42425f55
