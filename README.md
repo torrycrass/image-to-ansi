@@ -29,6 +29,6 @@ Yeah yeah, I'm aware about assumptions but this isn't subtaintial enough that I'
 
 If you are looking for simple text to ASCII art, I recommend using the following site. It has a large design selection and has provided solid results: http://patorjk.com/software/taag/
 
-Micah Elliott (MicahElliott): https://gist.github.com/MicahElliott/719710
-K Lange (klange): https://gist.github.com/klange/1687427
-Takumi Sueda (puhitaku): https://gist.github.com/puhitaku/7eaf6142fa5a42425f55
+- Micah Elliott (MicahElliott): https://gist.github.com/MicahElliott/719710
+- K Lange (klange): https://gist.github.com/klange/1687427
+- Takumi Sueda (puhitaku): https://gist.github.com/puhitaku/7eaf6142fa5a42425f55
