@@ -20,6 +20,10 @@ Yeah yeah, I'm aware about assumptions but this isn't subtaintial enough that I'
 3. Pillow (**pip install pillow**)
 4. Image (**pip install Image**)
 
+### Usage
+`python3 image-to-ansy.py <image>` or
+`python3 image-to-ansy.py <image> | ./commandify` to create a command that will print the image.
+
 ### To-Do List
 
 - [ ] Review sizing of output. Currently images larger than 50x50 are not very practical for console use.
