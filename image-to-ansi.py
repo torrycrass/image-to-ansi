@@ -327,10 +327,6 @@ def print_help():
     print("Standard:\n" \
         "\tpython image-to-ansi.py <inputfile>\n")
 
-    print("Output to File:\n" \
-        "\tpython image-to-ansi.py <inputfile> > <outputfile>")
-    print("\n")
-
     print(75 * "-")
 
     print("Source: https://github.com/torrycrass/image-to-ansi")
