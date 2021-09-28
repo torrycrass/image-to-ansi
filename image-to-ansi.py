@@ -398,7 +398,11 @@ if __name__ == '__main__':
         s = []
         for i, p in enumerate(im):
             short = rgb2short_fast(p[0], p[1], p[2])
-            s.append("\033[48;5;%sm  " % short)
+            if len(p) > 3 and p[3] == 0:
+                s.append("\033[0m  ")
+            else:
+                s.append("\033[48;5;%sm  " % short)
+
             if (i+1) % x == 0:
                 s.append("\033[0m\n")
         s.append("\n")
