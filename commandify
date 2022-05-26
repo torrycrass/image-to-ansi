@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+echo echo $(gzip | base64 | tr -d '\n')"|base64 -d|gunzip"
